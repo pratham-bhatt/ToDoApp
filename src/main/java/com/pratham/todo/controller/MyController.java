@@ -8,6 +8,8 @@ import com.pratham.todo.services.ActivityService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,8 +66,16 @@ public class MyController
 
     //for deleting the task
     @DeleteMapping("/activities/{id}")
-    public void deleteActivity(@PathVariable int id)
+    public ResponseEntity<Object> deleteActivity(@PathVariable int id)
     {
-        activityService.deleteActivity(id);
+        try 
+        {
+            this.activityService.deleteActivity(id);   
+            return new ResponseEntity<>(HttpStatus.OK);
+        } 
+        catch (Exception e) 
+        {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

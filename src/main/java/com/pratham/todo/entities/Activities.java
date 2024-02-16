@@ -1,7 +1,11 @@
 package com.pratham.todo.entities;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class Activities 
 {
+    @Id
     private int id;
     private String date;
     private String title;

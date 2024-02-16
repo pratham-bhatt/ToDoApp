@@ -2,6 +2,8 @@ package com.pratham.todo.services;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+
 import com.pratham.todo.entities.Activities;
 
 /**
@@ -19,5 +21,5 @@ public interface ActivityService
 
     public Activities updateStatus(int id , String status);
 
-    public void deleteActivity(int id);
+    public ResponseEntity<Object> deleteActivity(int id);
 } 
